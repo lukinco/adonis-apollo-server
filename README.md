@@ -8,8 +8,10 @@ This package integrates Apollo GraphQL Server with the AdonisJS framework. It al
 ## Installation
 
 ```bash
-yarn add lukinco/adonis-apollo-server
+yarn add lukinco/adonis-apollo-server#COMMIT_HASH
 ```
+
+> Don't forget to substitute `COMMIT_HASH` by a real commit hash :)
 
 ### Registering provider
 
