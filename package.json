@@ -1,0 +1,14 @@
+{
+  "name": "adonis-apollo-server",
+  "version": "0.1.0",
+  "description": "Production-ready Node.js GraphQL server for AdonisJS",
+  "main": "index.js",
+  "repository": "git@github.com:lukinco/adonis-apollo-server.git",
+  "author": "Lukin Co.",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "apollo-server-core": "2.14.1",
+    "apollo-server-module-graphiql": "1.4.0"
+  }
+}
