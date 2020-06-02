@@ -1,4 +1,5 @@
-# adonis-apollo-server
+# adonis-apollo-server [WIP]
+
 GraphQL implementation using Apollo Server for Adonis
 
 This package integrates Apollo GraphQL Server with the AdonisJS framework. It allows you to use Apollo server in your AdoinsJS app.
