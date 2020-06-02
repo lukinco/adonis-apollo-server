@@ -13,8 +13,8 @@ class ApolloServer {
       method: request.method(),
       options: options,
       query: request.method() === 'POST' ? request.post() : request.get()
-    }).then((gqlResponse) => {
-      return response.json(gqlResponse)
+    }).then(({ graphqlResponse }) => {
+      return response.json(graphqlResponse)
     }, error => {
       if ('HttpQueryError' !== error.name) {
         throw error
