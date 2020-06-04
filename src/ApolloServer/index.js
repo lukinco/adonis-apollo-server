@@ -15,7 +15,16 @@ class ApolloServer {
       options: options,
       query: request.method() === 'POST' ? toString(request.post()) : request.get()
     }).then(({ graphqlResponse }) => {
-      return response.json(graphqlResponse)
+      const parsedResponse = JSON.parse(graphqlResponse)
+      if (!parsedResponse.errors) {
+        return response.json(graphqlResponse)
+      }
+
+      const transformedError = onError ? onError(parsedResponse.errors) : parsedResponse.errors
+      return response.json({
+        errors: transformedError,
+        data: parsedResponse.data
+      })
     }, error => {
       if ('HttpQueryError' !== error.name) {
         throw error
