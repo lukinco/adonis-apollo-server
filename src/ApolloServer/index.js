@@ -5,7 +5,7 @@ const GraphiQL = require('apollo-server-module-graphiql')
 const { print } = require('graphql')
 
 class ApolloServer {
-  graphql (options, request, response) {
+  graphql ({ options, request, response, onError }) {
     if (!options) {
       throw new Error('Apollo Server requires options.')
     }
@@ -27,11 +27,16 @@ class ApolloServer {
         })
       }
 
-      response.status(error.statusCode).send(error.message)
+      const errorParsed = JSON.parse(error.message).errors
+      const transformedError = onError ? onError(errorParsed) : errorParsed
+
+      response.status(error.statusCode).send({
+        errors: transformedError
+      })
     })
   }
 
-  graphiql (options, request, response) {
+  graphiql ({ options, request, response }) {
     if (!options) {
       throw new Error('Apollo Server GraphiQL requires options.')
     }

@@ -55,11 +55,27 @@ const resolvers = {
 
 const schema = makeExecutableSchema({ typeDefs, resolvers })
 
-Route.post('/graphql', ({ request, response }) => {
-    return ApolloServer.graphql({ schema }, request, response)
+Route.post('/graphql', ({ auth, request, response }) => {
+  return ApolloServer.graphql({ 
+    options: {
+      schema,
+      context: { auth }
+    },
+    request, 
+    response,
+    onError: (errors) => {
+      // this function is optional. "errors" is an array of all errors. 
+      // You may show the errors the way you want to.
+      // If this function is defined, you must return an array of errors.
+    }
+  })
 })
 
 Route.get('/graphiql', ({ request, response }) => {
-    return ApolloServer.graphiql({ endpointURL: '/graphql' }, request, response)
+  return ApolloServer.graphiql({
+    options: { endpointURL: '/graphql' }, 
+    request, 
+    response
+  })
 })
 ```
