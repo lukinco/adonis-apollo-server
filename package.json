@@ -8,7 +8,7 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "apollo-server-core": "2.14.1",
+    "apollo-server-core": "2.14.2",
     "apollo-server-module-graphiql": "1.4.0"
   }
 }
