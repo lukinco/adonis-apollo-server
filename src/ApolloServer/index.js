@@ -3,17 +3,39 @@
 const { HttpQueryError, runHttpQuery } = require('apollo-server-core')
 const GraphiQL = require('apollo-server-module-graphiql')
 const { print } = require('graphql')
+const { processRequest, GraphQLUpload } = require('graphql-upload')
+const { makeExecutableSchema } = require('graphql-tools')
 
 class ApolloServer {
-  graphql ({ options, request, response, onError }) {
+  getQuery (request, response) {
+    if (request.is('multipart/form-data')) {
+      return processRequest(request.request, response.response)
+    }
+
+    return request.method() === 'POST' ? toString(request.post()) : request.get()
+  }
+
+  async graphql ({ options, request, response, onError }) {
     if (!options) {
       throw new Error('Apollo Server requires options.')
     }
 
+    const schemaWithUpload = {
+      typeDefs: `${options.schema.typeDefs}\nscalar Upload`,
+      resolvers: {
+        ...options.schema.resolvers,
+        Upload: GraphQLUpload,
+      },
+    }
+
+    options.schema = makeExecutableSchema(schemaWithUpload)
+
+    const query = await this.getQuery(request, response)
+
     return runHttpQuery([request], {
       method: request.method(),
       options: options,
-      query: request.method() === 'POST' ? toString(request.post()) : request.get()
+      query: query,
     }).then(({ graphqlResponse }) => {
       const parsedResponse = JSON.parse(graphqlResponse)
       if (!parsedResponse.errors) {
