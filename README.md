@@ -79,3 +79,11 @@ Route.get('/graphiql', ({ request, response }) => {
   })
 })
 ```
+
+## Uploads
+
+> TODO
+
+## License
+
+MIT
