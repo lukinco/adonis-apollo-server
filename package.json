@@ -6,7 +6,6 @@
   "repository": "git@github.com:lukinco/adonis-apollo-server.git",
   "author": "Lukin Co.",
   "license": "MIT",
-  "private": true,
   "scripts": {
     "postversion": "npm publish --access=public"
   },
