@@ -1,6 +1,6 @@
 {
   "name": "@lukinco/adonis-apollo-server",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Production-ready Node.js GraphQL server for AdonisJS",
   "main": "index.js",
   "repository": "git@github.com:lukinco/adonis-apollo-server.git",
