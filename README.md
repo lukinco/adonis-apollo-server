@@ -1,4 +1,4 @@
-# adonis-apollo-server [WIP]
+# adonis-apollo-server
 
 > GraphQL implementation using Apollo Server for Adonis
 
