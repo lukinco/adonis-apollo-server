@@ -2,33 +2,33 @@
 
 :us: [English][en-docs]&nbsp;&nbsp;|&nbsp;&nbsp;:brazil: [Português do Brasil][pt-br-docs]
 
-> GraphQL implementation using Apollo Server for Adonis
+> Implementação do GraphQL usando Apollo Server para Adonis
 
-This package integrates Apollo GraphQL Server with the AdonisJS framework. It allows you to use Apollo server in your AdoinsJS app.
+Este pacote integra o Apollo GraphQL Server com o framework AdonisJS. Ele permite que você use o Apollo Server em sua aplicação AdonisJS.
 
-> **NOTE:** This package requires [@adonisjs/bodyparser](https://github.com/adonisjs/adonis-bodyparser) and [graphql](https://github.com/graphql/graphql-js)
+> **NOTA:** Este pacote requer [@adonisjs/bodyparser](https://github.com/adonisjs/adonis-bodyparser) e [graphql](https://github.com/graphql/graphql-js)
 
-## Installation
+## Instalação
 
 ```bash
 yarn add --exact @lukinco/adonis-apollo-server
 ```
 
-### Registering provider
+### Registrando provider
 
-Make sure to register the provider inside `start/app.js` file.
+Tenha certeza de registrar o provider no arquivo `start/app.js`.
 
 ```js
 const providers = [
   '@lukinco/adonis-apollo-server/providers/ApolloServerProvider'
-]
+];
 ```
 
-That's all!
+Isso é tudo!
 
-## Usage
+## Uso
 
-Now you can use the provider by pulling it from IoC container
+Agora você pode usar o provider pegando ele do container IoC
 
 ```js
 // start/routes.js
@@ -63,9 +63,9 @@ Route.post('/graphql', ({ auth, request, response }) => {
     request,
     response,
     onError: (errors) => {
-      // this function is optional. "errors" is an array of all errors. 
-      // You may show the errors the way you want to.
-      // If this function is defined, you must return an array of errors.
+      // Esta função é opcional. "errors" é um array de todos os erros.
+      // Você pode mostrar os erros da maneira que quiser.
+      // Se esta função for definida, você precisa retornar um array de erros.
     }
   })
 })
@@ -81,9 +81,9 @@ Route.get('/graphiql', ({ request, response }) => {
 
 ## Uploads
 
-To make uploads, you must set `autoProcess: false` on `config/bodyParser.js`.
+Para fazer uploads, você precisa configurar `autoProcess: false` em `config/bodyParser.js`.
 
-You must define the field that will receive the uploaded file with scalar type `Upload`:
+Você precisa definir o campo que vai receber o arquivo do upload com o tipo escalar `Upload`:
 
 ```gql
 type Mutation {
@@ -91,9 +91,9 @@ type Mutation {
 }
 ```
 
-#### Usage
+#### Uso
 
-You may create a helper file in `app/Helpers/upload.js`:
+Você precisa criar um arquivo 'helper' em `app/Helpers/upload.js`:
 
 ```js
 'use strict'
@@ -134,19 +134,19 @@ module.exports = async (file) => {
 }
 ```
 
-Libs `slugify` and `uuid` are optional, but they will help you to create unique filenames.
+As bibliotecas `slugify` e `uuid` são opcionais, mas elas vão ajudar você a criar nomes únicos de arquivos.
 
-You can use an env var `UPLOAD_HOST`, like my example, if you want to upload files in different places by environment.
+Você pode usar uma variável env `UPLOAD_HOST`, como no exemplo, se você quer fazer upload de arquivos em diferentes ambientes.
 
-Then, when you want to make an upload, you just have to use that function, passing the file received as argument, and the function will return a Promise, that resolves to a full path of the file uploaded.
+Então, quando você quiser fazer um upload, você só tem que usar esta função, passando o arquivo recebido como argumento, e a função vai retornar uma Promise, que resolve o caminho completo do arquivo carregado.
 
-To send a file, look the next examples.
+Para enviar um arquivo, dê uma olhada nos próximos exemplos.
 
-#### How to test using Insomnia
+### Como testar usando Insomnia
 
-On Insomnia, you must use Multipart requests, and send 3 fields:
+No Insomnia, você precisa usar requisições Multipart, e enviar 3 campos:
 
-- `operations`: a JSON with `query` and `variables` keys:
+- `operations`: um JSON com chaves `query` e `variables`:
 
 ```json
 {
@@ -157,7 +157,8 @@ On Insomnia, you must use Multipart requests, and send 3 fields:
 }
 ```
 
-- `map`: a JSON mapping the file that will be upload with your variables set in `operations`:
+- `map`: um JSON mapeando o arquivo que vai ser carregado com suas variáveis configuradas em `operations`:
+
 
 ```json
 {
@@ -165,15 +166,15 @@ On Insomnia, you must use Multipart requests, and send 3 fields:
 }
 ```
 
-- `0`: the file itself. `0` is used here because we set in `map` above that `0` will point to our `variables.file` entry.
+- `0`: o arquivo em si. `0` é usado aqui porque nós configuramos no `map` acima que `0` vai apontar para nossa entrada `variables.file`.
 
-That's it :)
+É isso :)
 
-#### How to write tests
+#### Como escrever testes
 
-In Adonis v4, you have to install `axios` and `form-data` libraries to make the upload work on server side.
+No Adonis v4, você precisa instalar as bibliotecas `axios` e `form-data` para fazer o upload funcionar no lado do servidor.
 
-Then, you can use a helper to upload file like this:
+Então, você pode usar um helper para upload, como isto:
 
 ```js
 const fs = require('fs')
@@ -220,7 +221,7 @@ async function requestQuery ({ client, token, query, variables, file }) {
 }
 ```
 
-Then, just write your test:
+Então, simplesmente escreva seu teste:
 
 ```js
 const fs = require('fs')
@@ -246,7 +247,7 @@ test('Should upload an image with mimetype PNG', async ({ client }) => {
 
   const response = await requestQuery({
     client,
-    token, // use a token if you only want allow uploads for logged in users
+    token, // use um token se você quer permitir uploads somente para usuários autenticados
     query: UPLOAD,
     variables: { file: null },
     file,
@@ -261,7 +262,7 @@ test('Should upload an image with mimetype PNG', async ({ client }) => {
 })
 ```
 
-## License
+## Licença
 
 MIT
 
