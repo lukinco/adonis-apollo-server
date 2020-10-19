@@ -93,7 +93,7 @@ type Mutation {
 
 #### Uso
 
-Você precisa criar um arquivo 'helper' em `app/Helpers/upload.js`:
+Você pode criar um arquivo 'helper' em `app/Helpers/upload.js`:
 
 ```js
 'use strict'
@@ -174,7 +174,7 @@ No Insomnia, você precisa usar requisições Multipart, e enviar 3 campos:
 
 No Adonis v4, você precisa instalar as bibliotecas `axios` e `form-data` para fazer o upload funcionar no lado do servidor.
 
-Então, você pode usar um helper para upload, como isto:
+Então, você pode usar um helper para upload, como este:
 
 ```js
 const fs = require('fs')
