@@ -1,10 +1,14 @@
 # adonis-apollo-server
 
-:us: [English][en-docs]&nbsp;&nbsp;|&nbsp;&nbsp;:brazil: [Português do Brasil][pt-br-docs]
+<p align="center">
+  :us: <a href="/README.md">English</a>&nbsp;&nbsp;|&nbsp;&nbsp;:brazil: <a href="/docs/pt-br.md">Português do Brasil</a>
+</p>
+
+<p align="center"><img src="/design/logo-primary.png" /></p>
 
 > GraphQL implementation using Apollo Server for Adonis
 
-This package integrates Apollo GraphQL Server with the AdonisJS framework. It allows you to use Apollo server in your AdoinsJS app.
+This package integrates Apollo GraphQL Server with the AdonisJS framework. It allows you to use Apollo server in your AdonisJS app.
 
 > **NOTE:** This package requires [@adonisjs/bodyparser](https://github.com/adonisjs/adonis-bodyparser) and [graphql](https://github.com/graphql/graphql-js)
 
@@ -264,6 +268,3 @@ test('Should upload an image with mimetype PNG', async ({ client }) => {
 ## License
 
 MIT
-
-[en-docs]: /README.md
-[pt-br-docs]: /docs/pt-br.md

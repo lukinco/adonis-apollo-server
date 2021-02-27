@@ -1,6 +1,10 @@
 # adonis-apollo-server
 
-:us: [English][en-docs]&nbsp;&nbsp;|&nbsp;&nbsp;:brazil: [Português do Brasil][pt-br-docs]
+<p align="center">
+  :us: <a href="/README.md">English</a>&nbsp;&nbsp;|&nbsp;&nbsp;:brazil: <a href="/docs/pt-br.md">Português do Brasil</a>
+</p>
+
+<p align="center"><img src="/design/logo-primary.png" /></p>
 
 > Implementação do GraphQL usando Apollo Server para Adonis
 
@@ -265,6 +269,3 @@ test('Should upload an image with mimetype PNG', async ({ client }) => {
 ## Licença
 
 MIT
-
-[en-docs]: /README.md
-[pt-br-docs]: /docs/pt-br.md
