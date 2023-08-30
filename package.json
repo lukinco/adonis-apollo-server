@@ -10,7 +10,7 @@
     "postversion": "npm publish --access=public"
   },
   "dependencies": {
-    "apollo-server-core": "2.14.2",
+    "apollo-server-core": "2.26.2",
     "apollo-server-module-graphiql": "1.4.0",
     "graphql-tools": "6.0.16",
     "graphql-upload": "11.0.0"
