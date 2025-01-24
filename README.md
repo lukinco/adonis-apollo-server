@@ -1,7 +1,7 @@
 # adonis-apollo-server
 
 <p align="center">
-  :us: <a href="/README.md">English</a>&nbsp;&nbsp;|&nbsp;&nbsp;:brazil: <a href="/docs/pt-br.md">Português do Brasil</a>
+  :us: <a href="/README.md">English</a>&nbsp;&nbsp;|&nbsp;&nbsp; :brazil: <a href="/docs/pt-br.md">Português do Brasil</a>
 </p>
 
 <p align="center"><img src="/design/logo-primary.png" /></p>
